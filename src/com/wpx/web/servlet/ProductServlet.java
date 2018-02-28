@@ -25,7 +25,6 @@ public class ProductServlet extends BaseServlet {
         String pid = request.getParameter("pid");
 
         //2.调用service
-        //ProductService ps=new ProductServiceImpl();
         ProductService ps = (ProductService) BeanFactory.getBean("ProductService");
         Product p = ps.getByPid(pid);
 

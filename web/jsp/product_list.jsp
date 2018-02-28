@@ -38,7 +38,7 @@
 <div class="row" style="width:1210px;margin:0 auto;">
     <div class="col-md-12">
         <ol class="breadcrumb">
-            <li><a href="#">首页</a></li>
+            <li><a href="${pageContext.request.contextPath}/jsp/index.jsp">首页</a></li>
         </ol>
     </div>
     <c:forEach items="${pb.list }" var="p">
