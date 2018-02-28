@@ -89,5 +89,58 @@ public class ProductDaoImpl implements ProductDao {
         return qr.query(sql, new BeanListHandler<>(Product.class));
     }
 
+    /**
+     * 添加商品
+     *
+     * @param p
+     */
+    @Override
+    public void add(Product p) throws Exception {
+        QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?);";
+        qr.update(sql, p.getPid(), p.getPname(), p.getMarket_price(),
+                p.getShop_price(), p.getPimage(), p.getPdate(),
+                p.getIs_hot(), p.getPdesc(), p.getPflag(), p.getCategory().getCid());
+    }
+
+    /**
+     * 删除商品
+     *
+     * @param pid
+     * @throws Exception
+     */
+    @Override
+    public void delete(String pid) throws Exception {
+        QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "delete from product  where pid = ?";
+        qr.update(sql, pid);
+    }
+
+    /**
+     * 通过pid获取商品
+     *
+     * @param pid
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Product getById(String pid) throws Exception {
+        QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from product where pid = ? limit 1";
+        return qr.query(sql, new BeanHandler<>(Product.class), pid);
+    }
+
+    /**
+     * 更新商品
+     *
+     * @param product
+     * @throws Exception
+     */
+    @Override
+    public void update(Product product) throws Exception {
+        QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "update product set pname = ? ,market_price = ? ,shop_price = ? ,pdesc = ? ,is_hot = ? ,pimage =? ,cid = ? where pid = ?";
+        qr.update(sql, product.getPname(), product.getMarket_price(), product.getShop_price(), product.getPdesc(), product.getIs_hot(), product.getPimage(), product.getCategory().getCid(), product.getPid());
+    }
 
 }

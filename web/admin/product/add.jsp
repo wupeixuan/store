@@ -9,7 +9,8 @@
 
 <body>
 <!--  -->
-<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/addProduct" method="post"
+<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/adminProduct?method=add"
+      method="post"
       enctype="multipart/form-data">
     &nbsp;
     <table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee"

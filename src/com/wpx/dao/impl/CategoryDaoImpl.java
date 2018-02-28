@@ -48,7 +48,6 @@ public class CategoryDaoImpl implements CategoryDao {
         QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from category where cid = ? limit 1";
         return qr.query(sql, new BeanHandler<>(Category.class), cid);
-
     }
 
     /**

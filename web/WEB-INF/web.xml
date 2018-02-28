@@ -95,14 +95,6 @@
         <servlet-name>AdminProductServlet</servlet-name>
         <servlet-class>com.wpx.web.servlet.AdminProductServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>AddProductServlet</servlet-name>
-        <servlet-class>com.wpx.web.servlet.AddProductServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddProductServlet</servlet-name>
-        <url-pattern>/addProduct</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminProductServlet</servlet-name>
         <url-pattern>/adminProduct</url-pattern>
