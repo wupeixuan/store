@@ -129,9 +129,28 @@ public class OrderDaoImpl implements OrderDao {
      * @param order
      */
     @Override
-    public void update(Order order)throws Exception {
+    public void update(Order order) throws Exception {
         QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "update orders set state=?,address=?,name=?,telephone=? where oid=?";
         qr.update(sql, order.getState(), order.getAddress(), order.getName(), order.getTelephone(), order.getOid());
+    }
+
+    /**
+     * 根据状态查询订单
+     *
+     * @param state
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<Order> findAllByState(String state) throws Exception {
+        QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from orders where 1=1 ";
+        if (state != null && state.trim().length() > 0) {
+            sql += "and state = ? order by ordertime desc";
+            return qr.query(sql, new BeanListHandler<>(Order.class), state);
+        }
+        sql += " order by ordertime desc";
+        return qr.query(sql, new BeanListHandler<>(Order.class));
     }
 }
