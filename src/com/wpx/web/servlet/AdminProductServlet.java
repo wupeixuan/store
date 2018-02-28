@@ -1,6 +1,8 @@
 package com.wpx.web.servlet;
 
+import com.wpx.domain.Category;
 import com.wpx.domain.Product;
+import com.wpx.service.CategoryService;
 import com.wpx.service.ProductService;
 import com.wpx.utils.BeanFactory;
 
@@ -31,7 +33,21 @@ public class AdminProductServlet extends BaseServlet {
         return "/admin/product/list.jsp";
     }
 
-    public void addUI(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    /**
+     * 跳转到添加商品页面
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public String addUI(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        //查询所有的分类 返回list
+        CategoryService cs = (CategoryService) BeanFactory.getBean("CategoryService");
+        List<Category> clist = cs.findAll();
 
+        //将list放入request
+        request.setAttribute("clist", clist);
+        return "/admin/product/add.jsp";
     }
 }
