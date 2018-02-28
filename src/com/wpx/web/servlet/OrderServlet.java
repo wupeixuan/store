@@ -274,4 +274,27 @@ public class OrderServlet extends BaseServlet {
         return "/jsp/msg.jsp";
 
     }
+
+    /**
+     * 确认收货
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public String updateState(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        //1.获取 oid
+        String oid = request.getParameter("oid");
+
+        //2.调用service 修改订单状态
+        OrderService os = (OrderService) BeanFactory.getBean("OrderService");
+        Order order = os.getById(oid);
+        order.setState(3);
+        os.update(order);
+
+        //3.重定向
+        response.sendRedirect(request.getContextPath() + "/order?method=findAllByPage&currPage=1");
+        return null;
+    }
 }
