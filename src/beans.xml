@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="CategoryService" class="com.wpx.service.impl.CategoryServiceImpl"></bean>
+    <bean id="ProductService" class="com.wpx.service.impl.ProductServiceImpl"></bean>
+    <bean id="UserService" class="com.wpx.service.impl.UserServiceImpl"></bean>
+    <bean id="OrderService" class="com.wpx.service.impl.OrderServiceImpl"></bean>
+
+    <bean id="ProductDao" class="com.wpx.dao.impl.ProductDaoImpl"/>
+    <bean id="UserDao" class="com.wpx.dao.impl.UserDaoImpl"/>
+    <bean id="CategoryDao" class="com.wpx.dao.impl.CategoryDaoImpl"/>
+    <bean id="OrderDao" class="com.wpx.dao.impl.OrderDaoImpl"/>
+
+</beans>
