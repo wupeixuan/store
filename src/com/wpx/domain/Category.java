@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * 分类实体
- * @author Administrator
  *
  */
 public class Category implements Serializable {

@@ -25,7 +25,7 @@ public class BeanFactory {
             //1.获取document对象
             Document doc = new SAXReader().read(BeanFactory.class.getClassLoader().getResourceAsStream("beans.xml"));
             //2.获取指定的bean对象 xpath
-            Element ele = (Element) doc.selectSingleNode("//bean[@id='" + id + "']");
+            Element ele = (Element) doc.selectSingleNode(String.format("//bean[@id='%s']", id));
 
             //3.获取bean对象的class属性
             String value = ele.attributeValue("class");
@@ -60,5 +60,7 @@ public class BeanFactory {
         return null;
     }
 
-
+    public static void main(String[] args) {
+        System.out.println(getBean("ProductDao"));
+    }
 }

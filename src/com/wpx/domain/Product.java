@@ -5,7 +5,6 @@ import java.util.Date;
 
 /**
  * 商品实体
- * @author Administrator
  *
  */
 public class Product implements Serializable{
